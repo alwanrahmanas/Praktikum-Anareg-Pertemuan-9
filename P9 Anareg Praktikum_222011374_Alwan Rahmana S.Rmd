@@ -1,0 +1,60 @@
+---
+title: "Untitled"
+author: "Alwan Rahmana"
+date: "4/28/2022"
+output: pdf_document
+---
+
+
+```{r}
+library(olsrr)
+head(Data_Regresi08)
+Data_Regresi08
+data<-Data_Regresi08
+```
+```{r}
+Y<-data$Y
+X1<-data$X1
+X2<-data$X2
+X3<-data$X3
+modelf<-lm(Y~X1+X2+X3)
+```
+
+Forward Selection
+
+```{r}
+ols_step_forward_p(modelf,progress=TRUE)
+```
+
+Backward selection
+```{r}
+ols_step_backward_p(modelf,progress=TRUE)
+```
+Stepwise
+```{r}
+ols_step_all_possible(modelf,progress=TRUE)
+```
+
+```{r}
+d<-Data_TugasRegresi01
+Y<-d$Y
+X1<-d$X1
+X2<-d$X2
+X3<-d$X3
+X4<-d$X4
+model<-lm(Y~X1+X2+X3+X4)
+```
+Backward
+```{r}
+ols_step_backward_p(model,progress = TRUE)
+```
+Forward
+
+```{r}
+ols_step_forward_p(model,progress = T)
+```
+Stepwise
+```{r}
+ols_step_all_possible(model)
+```
+
